@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage"
 import AllPets from "./pages/AllPets"
 import CreatePet from "./pages/CreatePet"
 import Navbar from "./components/Navbar"
+import PetDetails from "./pages/PetDetails"
 function App() {
   return (
     <div>
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Homepage/>} />
         <Route path='/pets' element={<AllPets/>}/>
         <Route path='/pets/create' element={<CreatePet/>}/>
+        <Route path='/pets/:id' element={<PetDetails/>}/>
       </Routes>
     </div>
   )
