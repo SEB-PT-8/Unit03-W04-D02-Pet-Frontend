@@ -22,6 +22,11 @@ function AllPets() {
   return (
     <div>
         <h1>All Pets</h1>
+        {pets.map((onePet)=>
+        <div key={onePet._id}>
+            <h2>Name: {onePet.name}</h2>
+        </div>
+        )}
     </div>
   )
 }
