@@ -13,7 +13,7 @@ function PetDetails() {
     const navigate = useNavigate()
 
     async function getOnePet(){
-        const onePet = await axios.get(`http://localhost:3000/pets/${id}`)
+        const onePet = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`)
 
         setPet(onePet.data)
     }
@@ -24,7 +24,7 @@ function PetDetails() {
 
 
     async function deletePet(){
-        await axios.delete(`http://localhost:3000/pets/${id}`)
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`)
         navigate('/pets')
 
     }
