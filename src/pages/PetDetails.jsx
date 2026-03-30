@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import axios from 'axios'
+
 
 
 
@@ -9,8 +10,10 @@ function PetDetails() {
     const {id} = useParams()
     console.log(id)
 
+    const navigate = useNavigate()
+
     async function getOnePet(){
-        const onePet = axios.get(`http://localhost:3000/pets/${id}`)
+        const onePet = await axios.get(`http://localhost:3000/pets/${id}`)
 
         setPet(onePet.data)
     }
@@ -20,9 +23,24 @@ function PetDetails() {
     },[])
 
 
+    async function deletePet(){
+        await axios.delete(`http://localhost:3000/pets/${id}`)
+        navigate('/pets')
+
+    }
+
   return (
     <div>
         <h1>Pet Details</h1>
+
+        {pet ? (
+            <>
+                <h2>Name: {pet.name}</h2>
+                <p>Breed: {pet.breed}</p>
+                <p>Age: {pet.age}</p>
+                <button onClick={deletePet}>Delete Pet</button>
+            </>
+            ) : <h2>Loading...</h2>}
     </div>
   )
 }
