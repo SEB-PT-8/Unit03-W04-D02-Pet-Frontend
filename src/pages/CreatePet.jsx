@@ -7,10 +7,17 @@ function CreatePet() {
     breed:''
   })
 
+   function handleChange(event){
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    }
+
 
   function handleSubmit(event){
     event.preventDefault()
   }
+
+
+
   return (
     <div>
         <h1>Create a new Pet</h1>
@@ -18,13 +25,13 @@ function CreatePet() {
         <form onSubmit={handleSubmit}>
 
           <label htmlFor="name">Name:</label>
-          <input name='name' type="text" />
+          <input onChange={handleChange} value={formData.name} name='name' type="text" />
 
           <label htmlFor="age">Age:</label>
-          <input name='age' type="number" />
+          <input onChange={handleChange} min={0} value={formData.age} name='age' type="number" />
 
           <label htmlFor="breed">Breed:</label>
-          <input name='breed' type="text" />
+          <input onChange={handleChange} value={formData.breed} name='breed' type="text" />
 
           <button>Create Pet</button>
         </form>
