@@ -10,6 +10,7 @@ function CreatePet() {
   })
 
   const navigate = useNavigate()
+  
    function handleChange(event){
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
