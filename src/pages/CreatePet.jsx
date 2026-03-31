@@ -17,7 +17,7 @@ function CreatePet() {
     event.preventDefault()
     console.log("FORM IS SUBMITTED")
     // send the data that the user inputted as a POST request to the server
-    const createdPet = await axios.post(`http://localhost:3000/pet`, formData)
+    const createdPet = await axios.post(`http://localhost:3000/pets`, formData)
 
   }
 
