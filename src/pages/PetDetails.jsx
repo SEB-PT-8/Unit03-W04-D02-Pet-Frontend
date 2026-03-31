@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router'
+import { useParams, useNavigate, Link } from 'react-router'
 import axios from 'axios'
 
 
@@ -39,6 +39,8 @@ function PetDetails() {
                 <p>Breed: {pet.breed}</p>
                 <p>Age: {pet.age}</p>
                 <button onClick={deletePet}>Delete Pet</button>
+                <Link to={`/pets/edit/${pet._id}`}>Edit Pet</Link>
+
             </>
             ) : <h2>Loading...</h2>}
     </div>
