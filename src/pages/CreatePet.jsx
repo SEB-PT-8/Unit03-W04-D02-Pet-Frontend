@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from 'axios'
+import { useNavigate } from "react-router"; // used for redirecting the user
 
 function CreatePet() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ function CreatePet() {
     breed:''
   })
 
+  const navigate = useNavigate()
    function handleChange(event){
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
@@ -17,8 +19,9 @@ function CreatePet() {
     event.preventDefault()
     console.log("FORM IS SUBMITTED")
     // send the data that the user inputted as a POST request to the server
-    const createdPet = await axios.post(`http://localhost:3000/pets`, formData)
+    const createdPet = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/pets`, formData)
 
+    navigate('/pets') // after the pet is created we rediect to /pets
   }
 
 
