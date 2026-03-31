@@ -4,9 +4,9 @@ import { Link } from 'react-router'
 function Navbar() {
   return (
     <div>
-        <Link to='/'>Homepage</Link>
-        <Link to='/pets'>All Pets</Link>
-        <Link to='/pets/create'>Create Pet</Link>
+        <Link className='nav-link' to='/'>Homepage</Link>
+        <Link className='nav-link' to='/pets'>All Pets</Link>
+        <Link className='nav-link' to='/pets/create'>Create Pet</Link>
     </div>
   )
 }
