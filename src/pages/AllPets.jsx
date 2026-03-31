@@ -6,11 +6,18 @@ function AllPets() {
     const [pets, setPets] = useState([])
 
     async function getAllPets(){
+        try{
         // 1. get all the pets from our API
         const allPets = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets`)
         // 2. set the state to all the pets
         console.log(allPets.data)
         setPets(allPets.data)
+
+        }
+        catch(err){
+            console.log(err)
+        }
+      
     }
     
     // 2 arguments
