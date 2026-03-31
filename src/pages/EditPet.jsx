@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router";
+import axios from "axios";
 // 1. make an axios call to get the full pet details
 // 2. pre fill the form with the pet details
 // 3. once the user changes and clicks the "edit pet" button we send a PUT request to the server
@@ -15,10 +17,30 @@ function EditPet() {
         breed:''
     })
 
+    const { id } = useParams()
+
+    function handleChange(event){
+        setFormData({ ...formData, [event.target.name]: event.target.value });
+    }
 
     function handleSubmit(event){
         event.preventDefault()
     }
+
+    async function getPetDetails(){
+        const petDetails = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`)
+        setFormData(petDetails.data)
+    }
+
+    useEffect(()=>{
+        getPetDetails()
+    },[])
+
+
+    // 1. when the component first loads, fetch the details of pet by id
+    // 2. set the state to the fetched pet
+
+
 
     
   return (
@@ -26,6 +48,16 @@ function EditPet() {
         <h1>Edit Pet</h1>
         <form onSubmit={handleSubmit}>
 
+        <label htmlFor="name">Name:</label>
+        <input value={formData.name} onChange={handleChange} name="name" type="text" />
+
+        <label htmlFor="age">Age:</label>
+        <input value={formData.age} onChange={handleChange} name="age" type="number" />
+
+        <label htmlFor="">Breed:</label>
+        <input value={formData.breed} onChange={handleChange} name="breed" type="text" />
+
+        <button>Edit Pet</button>
         </form>
     </div>
   )
