@@ -12,6 +12,9 @@ function CreatePet() {
 
         <form onSubmit={handleSubmit}>
 
+          <label htmlFor=""></label>
+          <input type="text" />
+
           <button>Create Pet</button>
         </form>
     </div>
