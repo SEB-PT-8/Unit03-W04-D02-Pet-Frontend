@@ -12,7 +12,7 @@ async function getPetById(id){
     }
 }
 
-async function getAllPets(){
+async function fetchAllPets(){
     try{
         const res = await axios.get(`${baseUrl}/pets`)
         return res.data
@@ -22,4 +22,4 @@ async function getAllPets(){
     }
 }
 
-export {getPetById, getAllPets}
+export {getPetById, fetchAllPets}
