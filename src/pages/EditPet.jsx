@@ -28,10 +28,16 @@ function EditPet() {
     async function handleSubmit(event){
         event.preventDefault()
 
+        try{
         // 1. send a PUT request to /pets/:id
         const updatedPet = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`, formData)
         // 2. redirect user to /pets
         navigate('/pets/' + id )
+        }
+        catch(err){
+            console.log(err)
+        }
+        
     }
 
     async function getPetDetails(){
