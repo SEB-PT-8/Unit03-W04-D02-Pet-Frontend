@@ -21,7 +21,7 @@ function CreatePet() {
     // send the data that the user inputted as a POST request to the server
     const createdPet = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/pets`, formData)
 
-    navigate('/pets') // after the pet is created we rediect to /pets
+    navigate('/pets/' + createdPet._id) // after the pet is created we rediect to /pets
   }
 
 
