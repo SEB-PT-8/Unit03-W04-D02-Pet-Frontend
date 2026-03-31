@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router'
 import axios from 'axios'
+import { getPetById } from '../services/petsService'
 
 
 
@@ -13,9 +14,9 @@ function PetDetails() {
     const navigate = useNavigate()
 
     async function getOnePet(){
-        const onePet = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`)
+        const onePet = await getPetById(id)
 
-        setPet(onePet.data)
+        setPet(onePet)
     }
 
     useEffect(()=>{

@@ -11,3 +11,15 @@ async function getPetById(id){
 
     }
 }
+
+async function getAllPets(){
+    try{
+        const res = await axios.get(`${baseUrl}/pets`)
+        return res.data
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+export {getPetById, getAllPets}

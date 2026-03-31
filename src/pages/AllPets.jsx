@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import { Link } from "react-router"
+import { fetchAllPets } from "../services/petsService"
 
 function AllPets() {
     const [pets, setPets] = useState([])
@@ -8,10 +9,10 @@ function AllPets() {
     async function getAllPets(){
         try{
         // 1. get all the pets from our API
-        const allPets = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets`)
+        const allPets = await fetchAllPets()
         // 2. set the state to all the pets
-        console.log(allPets.data)
-        setPets(allPets.data)
+        console.log(allPets)
+        setPets(allPets)
 
         }
         catch(err){

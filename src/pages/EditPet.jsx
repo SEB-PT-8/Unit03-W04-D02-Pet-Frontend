@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+import { getPetById } from "../services/petsService";
 
 // 1. make an axios call to get the full pet details
 // 2. pre fill the form with the pet details
@@ -41,8 +42,8 @@ function EditPet() {
     }
 
     async function getPetDetails(){
-        const petDetails = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`)
-        setFormData(petDetails.data)
+        const petDetails = await getPetById(id)
+        setFormData(petDetails)
     }
 
     useEffect(()=>{
