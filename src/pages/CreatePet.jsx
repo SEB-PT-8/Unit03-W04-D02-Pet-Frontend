@@ -1,6 +1,11 @@
 import { useState } from "react"
 
 function CreatePet() {
+  const [formData, setFormData] = useState({
+    name:'',
+    age:0,
+    breed:''
+  })
 
 
   function handleSubmit(event){
