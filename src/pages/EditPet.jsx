@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+
 // 1. make an axios call to get the full pet details
 // 2. pre fill the form with the pet details
 // 3. once the user changes and clicks the "edit pet" button we send a PUT request to the server
@@ -18,13 +19,19 @@ function EditPet() {
     })
 
     const { id } = useParams()
+    const navigate = useNavigate()
 
     function handleChange(event){
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
         event.preventDefault()
+
+        // 1. send a PUT request to /pets/:id
+        const updatedPet = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/pets/${id}`, formData)
+        // 2. redirect user to /pets
+        navigate('/pets/' + id )
     }
 
     async function getPetDetails(){
