@@ -20,9 +20,15 @@ function CreatePet() {
     event.preventDefault()
     console.log("FORM IS SUBMITTED")
     // send the data that the user inputted as a POST request to the server
+    try{
     const createdPet = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/pets`, formData)
 
     navigate('/pets/' + createdPet.data._id) // after the pet is created we rediect to /pets
+
+    }catch(err){
+      console.log(err)
+    }
+   
   }
 
 
